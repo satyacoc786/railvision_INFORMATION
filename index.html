@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RailVision — the software intelligence and command layer that receives field-device inputs, performs AI-assisted analysis and risk assessment, and converts inputs into actionable alerts and geo-tagged incidents." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>RailVision — AI Decision & Command Layer for Railway Security</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="RailVision home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="3" width="16" height="14" rx="3"></rect>
+            <path d="M4 11h16"></path>
+            <path d="M8 21l2-4M16 21l-2-4"></path>
+            <circle cx="8.5" cy="14" r="0.6" fill="currentColor"></circle>
+            <circle cx="15.5" cy="14" r="0.6" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <span class="brand-text">Rail<strong>Vision</strong></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#algorithms">Algorithms</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#team">Team &amp; Skills</a>
+        <a href="#roadmap">Roadmap</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">Railway Security &middot; AI Decision Layer &middot; Prototype</p>
+        <h1 class="hero-title text-balance">The software intelligence and command layer for railway security</h1>
+        <p class="hero-lede text-pretty">
+          "Railvision is not the physical detection sensor; it is the software intelligence and command layer
+          that receives field-device inputs, performs AI-assisted analysis and risk assessment, and converts
+          those inputs into actionable alerts and geo-tagged incidents."
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#simulator">Try the Threat Simulator</a>
+          <a class="btn btn-ghost" href="#overview">Read the concept</a>
+        </div>
+        <div class="hero-inputs" aria-label="Simulated inputs the system receives">
+          <span class="chip">Camera / video frames</span>
+          <span class="chip">Simulated sensor readings</span>
+          <span class="chip">Device ID</span>
+          <span class="chip">Location</span>
+          <span class="chip">Time</span>
+          <span class="chip">Device status</span>
+          <span class="chip">Environmental info</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. WHAT THE AI DOES -->
+    <section class="section" id="overview">
+      <div class="wrap">
+        <p class="kicker">01</p>
+        <h2 class="section-title">First: What exactly is the AI supposed to do?</h2>
+        <p>Your system receives simulated inputs such as:</p>
+        <ul class="tick-list">
+          <li>Camera/video frames</li>
+          <li>Simulated detector/sensor readings</li>
+          <li>Device ID</li>
+          <li>Location</li>
+          <li>Time</li>
+          <li>Device status</li>
+          <li>Environmental information</li>
+        </ul>
+        <p>Then it answers:</p>
+        <blockquote class="quote">
+          "Does this combination of information represent a normal situation or a potentially suspicious security event?"
+        </blockquote>
+        <p>For the prototype, don't claim:</p>
+        <p class="callout callout-warn">"Our CNN detects RDX."</p>
+        <p>Instead say:</p>
+        <p class="callout callout-good">"Our AI decision layer analyzes simulated visual and sensor inputs to classify potential security events and assign a risk score."</p>
+        <p>That's technically much stronger.</p>
+      </div>
+    </section>
+
+    <!-- 2. ALGORITHMS -->
+    <section class="section section-alt" id="algorithms">
+      <div class="wrap">
+        <p class="kicker">02</p>
+        <h2 class="section-title">Algorithms you can use</h2>
+        <p>You don't need 10 different algorithms. I recommend 4 main components.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Component</th><th>Algorithm/Technique</th><th>Why we use it</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Visual analysis</td><td>YOLO</td><td>Detect objects/situations in camera frames</td></tr>
+              <tr><td>Image classification</td><td>CNN / transfer learning</td><td>Classify predefined visual categories</td></tr>
+              <tr><td>Multi-input analysis</td><td>Feature fusion / sensor fusion</td><td>Combine camera + simulated sensor information</td></tr>
+              <tr><td>Final decision</td><td>Risk scoring + classification model</td><td>Convert multiple signals into LOW/MEDIUM/HIGH risk</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Let's understand each.</p>
+
+        <div class="cards">
+          <!-- 3. YOLO -->
+          <article class="card">
+            <p class="kicker">03</p>
+            <h3>Algorithm 1 — YOLO for visual detection</h3>
+            <p><strong>What is YOLO?</strong></p>
+            <p>YOLO = You Only Look Once. It's a real-time object detection algorithm.</p>
+            <p>For example:</p>
+            <pre class="ascii">Camera frame
+      &darr;
+     YOLO
+      &darr;
+&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474; Person                  &#9474;
+&#9474; Bag                     &#9474;
+&#9474; Luggage                 &#9474;
+&#9474; Vehicle                 &#9474;
+&#9474; Other predefined object &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</pre>
+            <p>It can return:</p>
+            <pre class="ascii">Object: Bag
+Confidence: 92%
+Location: Platform 3</pre>
+            <p><strong>Why YOLO?</strong></p>
+            <p>Your PS requires real-time operation. YOLO is particularly suitable for real-time visual detection because it can process video frames and identify predefined objects.</p>
+            <p>For your prototype, you could demonstrate:</p>
+            <pre class="ascii">Video/Image
+      &darr;
+    YOLO
+      &darr;
+Object detected
+      &darr;
+Feature extraction
+      &darr;
+Threat analysis</pre>
+            <p><strong>Important limitation</strong></p>
+            <p>YOLO does not chemically identify explosives or narcotics from an ordinary image. You should use it for visual/object/situation analysis, not chemical identification.</p>
+          </article>
+
+          <!-- 4. CNN -->
+          <article class="card">
+            <p class="kicker">04</p>
+            <h3>Algorithm 2 — CNN / Transfer Learning</h3>
+            <p>Suppose you want the prototype to classify images into predefined categories. For example:</p>
+            <pre class="ascii">Input image
+      &darr;
+     CNN
+      &darr;
+Normal / Suspicious</pre>
+            <p>Instead of training a huge CNN from zero, use transfer learning. Conceptually:</p>
+            <pre class="ascii">Pre-trained model
+        &darr;
+Fine-tune using your dataset
+        &darr;
+Your railway-security classifier</pre>
+            <p>Possible prototype classes could be:</p>
+            <ul class="tick-list">
+              <li>Normal scene</li>
+              <li>Suspicious object/event</li>
+              <li>Unusual luggage situation</li>
+              <li>Restricted-area activity</li>
+            </ul>
+            <p>Again, these are prototype classifications, not chemical identification.</p>
+            <p><strong>Why transfer learning?</strong></p>
+            <p>Training a large vision model from scratch requires a huge dataset, significant computing power, lots of training time and ML expertise. Transfer learning lets you start from a model that has already learned general visual features. For a hackathon prototype, that's much more practical.</p>
+          </article>
+
+          <!-- 5. Sensor fusion -->
+          <article class="card">
+            <p class="kicker">05</p>
+            <h3>Algorithm 3 — Sensor/Data Fusion</h3>
+            <p>This is actually one of the most important ideas for your project. Your future system isn't supposed to depend on only a camera. It could receive:</p>
+            <pre class="ascii">Camera
+   + Detector/Sensor
+   + Device information
+   + Location
+   + Time</pre>
+            <p>You can combine these inputs. For example:</p>
+            <pre class="ascii">Visual score       = 0.72
+Sensor score       = 0.81
+Context score      = 0.60
+Device status      = NORMAL
+              &darr;
+         DATA FUSION
+              &darr;
+       Combined Risk</pre>
+            <p>This is called sensor fusion or feature fusion, depending on how you implement it.</p>
+            <p><strong>Why?</strong></p>
+            <p>One sensor can produce uncertain information. Combining multiple signals can provide a better basis for deciding whether an event deserves attention.</p>
+            <p>For your prototype, you can implement something simple. For example:</p>
+            <pre class="ascii">Risk Score = 0.5 &times; visual_score
+           + 0.4 &times; sensor_score
+           + 0.1 &times; context_score</pre>
+            <p>Then:</p>
+            <pre class="ascii">0&ndash;30   &rarr; LOW
+31&ndash;70  &rarr; MEDIUM
+71&ndash;100 &rarr; HIGH</pre>
+            <p>These weights are prototype parameters, not scientifically validated operational thresholds. That's an important distinction when presenting to judges.</p>
+          </article>
+
+          <!-- 6 & 7. Risk classification -->
+          <article class="card">
+            <p class="kicker">06 &middot; 07</p>
+            <h3>Algorithm 4 — Risk Classification</h3>
+            <p>After combining the inputs, you need to make a decision. You have two good options.</p>
+            <p><strong>Option A — Rule-based risk engine</strong></p>
+            <p>For your first prototype, I actually recommend this.</p>
+            <pre class="ascii">IF visual_score &gt; threshold
+AND sensor_score &gt; threshold
+        &darr;
+    HIGH RISK</pre>
+            <p>Or:</p>
+            <pre class="ascii">Visual = 80
+Sensor = 75
+Context = 60
+        &darr;
+Risk Score = 77
+        &darr;
+     HIGH</pre>
+            <p><strong>Why start with rules?</strong> Because it's easy to understand, easy to demonstrate, easy to debug, doesn't require a huge dataset, and judges can understand exactly how the result was generated.</p>
+            <p><strong>Later: Machine-learning risk classifier.</strong> Once you have enough properly labelled data, you can replace the rule-based system with a machine-learning classifier — for example, Random Forest.</p>
+            <p>Inputs: Visual confidence, Sensor score, Motion score, Environmental values, Location type, Time, Device status. Output: LOW / MEDIUM / HIGH.</p>
+            <p><strong>Why Random Forest?</strong> For structured/tabular data, Random Forest is a strong beginner-friendly baseline. It handles nonlinear relationships reasonably well and is relatively easy to train and interpret.</p>
+            <p>So your evolution could be:</p>
+            <pre class="ascii">VERSION 1  Rule-based risk engine
+        &darr;
+VERSION 2  Random Forest / similar classifier
+        &darr;
+VERSION 3  More advanced multimodal model</pre>
+            <p>Don't jump straight to Version 3.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. PIPELINE -->
+    <section class="section" id="pipeline">
+      <div class="wrap">
+        <p class="kicker">08</p>
+        <h2 class="section-title">Recommended complete AI pipeline</h2>
+        <p>Here's what I would build:</p>
+        <pre class="ascii ascii-wide">                INPUT LAYER
+                    &#9474;
+         &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+         &#9474;                     &#9474;
+     Camera              Simulated Sensors
+         &#9474;                     &#9474;
+         &#9660;                     &#9660;
+       YOLO              Sensor Processing
+         &#9474;                     &#9474;
+         &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+                    &#9660;
+              FEATURE FUSION
+                    &#9474;
+                    &#9660;
+             RISK ASSESSMENT
+                    &#9474;
+                    &#9660;
+            RISK CLASSIFIER
+                    &#9474;
+         &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+         &#9660;          &#9660;          &#9660;
+        LOW       MEDIUM      HIGH
+         &#9474;          &#9474;          &#9474;
+         &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+                    &#9660;
+               ALERT ENGINE
+                    &#9474;
+                    &#9660;
+            INCIDENT DATABASE
+                    &#9474;
+                    &#9660;
+            RAILVISION DASHBOARD</pre>
+        <p>This is a very good architecture for your presentation.</p>
+      </div>
+    </section>
+
+    <!-- 9. Narcotics / explosives -->
+    <section class="section section-alt" id="detection">
+      <div class="wrap">
+        <p class="kicker">09</p>
+        <h2 class="section-title">What about detecting narcotics and explosives?</h2>
+        <p>This is where you need to be careful. The actual PS mentions specific substances and explosives. But your software cannot determine their chemical identity from an ordinary camera. A real deployment would require appropriate detection hardware, and your software would consume the outputs from those sensors.</p>
+        <div class="split">
+          <div class="split-col">
+            <h3>Real deployment</h3>
+            <pre class="ascii">Chemical/Explosive Sensor
+          &darr;
+    Sensor Reading
+          &darr;
+  Railvision Software
+          &darr;
+ AI + Risk Assessment
+          &darr;
+       Alert</pre>
+          </div>
+          <div class="split-col">
+            <h3>Your SIH prototype</h3>
+            <pre class="ascii">Simulated Sensor Reading
+          &darr;
+  Railvision Software
+          &darr;
+ AI + Risk Assessment
+          &darr;
+       Alert</pre>
+          </div>
+        </div>
+        <p>That's the honest and technically defensible approach.</p>
+      </div>
+    </section>
+
+    <!-- 10. Do you need AI for everything -->
+    <section class="section" id="ai-scope">
+      <div class="wrap">
+        <p class="kicker">10</p>
+        <h2 class="section-title">Do you need AI for everything?</h2>
+        <p>No. This is an important point. Your website can use normal programming for login, navigation, database, alerts, incident management, maps, device status and offline synchronization.</p>
+        <div class="split">
+          <div class="split-col">
+            <h3>AI</h3>
+            <ul class="tick-list">
+              <li>Visual analysis</li>
+              <li>Threat classification</li>
+              <li>Risk estimation</li>
+            </ul>
+          </div>
+          <div class="split-col">
+            <h3>Normal software</h3>
+            <ul class="tick-list">
+              <li>Dashboard</li>
+              <li>Database</li>
+              <li>Alerts</li>
+              <li>Maps</li>
+              <li>Logging</li>
+              <li>Synchronization</li>
+            </ul>
+          </div>
+        </div>
+        <p>Don't add "AI" to every feature just to make the project sound advanced.</p>
+      </div>
+    </section>
+
+    <!-- SIMULATOR -->
+    <section class="section section-alt" id="simulator">
+      <div class="wrap">
+        <p class="kicker">Demo</p>
+        <h2 class="section-title">Threat Simulator</h2>
+        <p>A judge picks a device, location and scenario, then runs the simulation. RailVision runs the full pipeline — visual analysis, sensor analysis, feature fusion, risk assessment — and produces a risk level and alert. This demo uses the prototype weighting <code>0.5 &times; visual + 0.4 &times; sensor + 0.1 &times; context</code> described above.</p>
+
+        <div class="sim">
+          <form class="sim-form" id="simForm">
+            <div class="field">
+              <label for="device">Device</label>
+              <select id="device">
+                <option value="HH-04">HH-04</option>
+                <option value="HH-01">HH-01</option>
+                <option value="QD-02">QD-02 (Quadruped)</option>
+                <option value="CAM-11">CAM-11</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="location">Location</label>
+              <select id="location">
+                <option value="Platform 4">Platform 4</option>
+                <option value="Platform 3">Platform 3</option>
+                <option value="Concourse">Concourse</option>
+                <option value="Restricted Area">Restricted Area</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="scenario">Scenario</label>
+              <select id="scenario">
+                <option value="suspicious">Suspicious Security Event</option>
+                <option value="normal">Normal Situation</option>
+                <option value="unattended">Unattended Luggage</option>
+                <option value="restricted">Restricted-Area Activity</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" id="runBtn">Run Simulation</button>
+          </form>
+
+          <div class="sim-output" id="simOutput" aria-live="polite">
+            <ol class="pipeline-steps" id="pipelineSteps">
+              <li data-step>Input received</li>
+              <li data-step>Visual analysis</li>
+              <li data-step>Sensor data analysis</li>
+              <li data-step>Feature fusion</li>
+              <li data-step>Risk assessment</li>
+            </ol>
+
+            <div class="scores" id="scores" hidden>
+              <div class="score"><span>Visual</span><strong id="visualScore">—</strong></div>
+              <div class="score"><span>Sensor</span><strong id="sensorScore">—</strong></div>
+              <div class="score"><span>Context</span><strong id="contextScore">—</strong></div>
+              <div class="score score-total"><span>Risk Score</span><strong id="totalScore">—</strong></div>
+            </div>
+
+            <div class="alert-card" id="alertCard" hidden>
+              <div class="alert-head">
+                <span class="alert-badge" id="riskBadge">HIGH</span>
+                <span class="alert-title" id="alertTitle">Security Alert</span>
+              </div>
+              <dl class="alert-meta">
+                <div><dt>Risk Level</dt><dd id="metaRisk">HIGH</dd></div>
+                <div><dt>Device</dt><dd id="metaDevice">HH-04</dd></div>
+                <div><dt>Location</dt><dd id="metaLocation">Platform 4</dd></div>
+                <div><dt>Time</dt><dd id="metaTime">—</dd></div>
+              </dl>
+              <p class="alert-sent" id="alertSent">Alert sent to control centre.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="incidents">
+          <div class="incidents-head">
+            <h3>Incident Database</h3>
+            <div class="sync-status" id="syncStatus" data-online="true">
+              <button type="button" class="btn btn-small" id="toggleNetwork">Network: ON</button>
+              <button type="button" class="btn btn-small" id="syncBtn" hidden>Sync now</button>
+              <span class="sync-note" id="syncNote"></span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table id="incidentsTable">
+              <thead>
+                <tr><th>Incident</th><th>Classification</th><th>Risk</th><th>Location</th><th>Time</th><th>Status</th></tr>
+              </thead>
+              <tbody id="incidentsBody">
+                <tr class="empty-row"><td colspan="6">No incidents yet — run a simulation to generate one.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dash">
+          <h3>Dashboard</h3>
+          <div class="stats">
+            <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="stat-label">Total incidents</span></div>
+            <div class="stat"><span class="stat-num" id="statHigh">0</span><span class="stat-label">High risk</span></div>
+            <div class="stat"><span class="stat-num" id="statMedium">0</span><span class="stat-label">Medium risk</span></div>
+            <div class="stat"><span class="stat-num" id="statPending">0</span><span class="stat-label">Pending sync</span></div>
+          </div>
+        </div>
+        <p class="fineprint">This simulator is a front-end illustration of the described pipeline. Scores are generated from prototype rules and do not represent real detection.</p>
+      </div>
+    </section>
+
+    <!-- 11-16. SKILLS -->
+    <section class="section" id="team">
+      <div class="wrap">
+        <p class="kicker">11 &ndash; 16</p>
+        <h2 class="section-title">Skills your team needs</h2>
+        <p>You don't need everyone to know everything. I'd divide the skills into 5 areas.</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Skill 1 — Python</h3>
+            <p>At least 1–2 team members should be comfortable with:</p>
+            <ul class="tick-list">
+              <li>Python basics</li><li>Functions</li><li>Classes</li><li>File handling</li>
+              <li>NumPy</li><li>Pandas</li><li>JSON</li><li>Virtual environments</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Skill 2 — Machine Learning</h3>
+            <p>Your AI/ML members should understand basics: Dataset, Features, Labels, Training, Validation, Testing, Overfitting, Underfitting, Accuracy, Precision, Recall, F1-score, Confusion matrix.</p>
+            <p>Computer vision: Images, Video frames, Bounding boxes, Object detection, Classification, OpenCV, Deep learning.</p>
+            <p>Learn enough about: Neural networks, CNNs, Transfer learning, YOLO, Model inference. You don't need to become a deep-learning researcher.</p>
+          </article>
+
+          <article class="card">
+            <h3>Skill 3 — Backend development</h3>
+            <p>One or two members should learn FastAPI or Flask. I'd choose FastAPI if your team is comfortable with Python.</p>
+            <pre class="ascii">Frontend
+    &darr; HTTP Request
+ FastAPI
+    &darr;
+ AI Model
+    &darr;
+ Database
+    &darr; HTTP Response
+Frontend</pre>
+            <p>Important concepts: REST APIs, GET, POST, PUT/PATCH, DELETE, JSON, API endpoints, Error handling.</p>
+          </article>
+
+          <article class="card">
+            <h3>Skill 4 — Frontend development</h3>
+            <p>Someone needs to be responsible for: HTML, CSS, JavaScript, React (optional), Responsive design, Charts, Tables, Forms, API integration.</p>
+            <p>For your project, React is useful if someone already knows it. Otherwise HTML + CSS + JavaScript is completely acceptable.</p>
+          </article>
+
+          <article class="card">
+            <h3>Skill 5 — Database</h3>
+            <p>Learn one database properly. For your prototype, SQLite is enough. Understand: Devices, Alerts, Incidents, Users, Events.</p>
+            <pre class="ascii">DEVICES          ALERTS
+---------        ---------
+device_id        alert_id
+device_type      device_id
+status           risk_level
+location         location
+battery          timestamp
+                 status
+
+INCIDENTS
+---------
+incident_id
+classification
+risk_level
+location
+timestamp
+status</pre>
+            <p>Later you can move to PostgreSQL if necessary.</p>
+          </article>
+
+          <article class="card">
+            <h3>Additional skills</h3>
+            <p><strong>Git/GitHub</strong> — Everyone should know: git clone, git add, git commit, git push, git pull, and basic branch/merge concepts.</p>
+            <p><strong>UI/UX</strong> — At least one member should understand: Visual hierarchy, Dashboard design, Responsive layouts, Accessibility, Information density, API integration. Important for connecting AI ↔ Backend ↔ Frontend.</p>
+            <p><strong>Testing</strong> — Learn basic: Unit testing, API testing, Integration testing, UI testing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17. TEAM -->
+    <section class="section section-alt" id="roles">
+      <div class="wrap">
+        <p class="kicker">17</p>
+        <h2 class="section-title">Suggested 5-member team</h2>
+        <p>If you have five people, this division works well:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Member</th><th>Main responsibility</th><th>Skills</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>AI/Computer Vision</td><td>Python, OpenCV, YOLO, ML</td></tr>
+              <tr><td>2</td><td>AI/Data Fusion</td><td>Python, ML, data processing</td></tr>
+              <tr><td>3</td><td>Backend</td><td>FastAPI, Python, SQLite</td></tr>
+              <tr><td>4</td><td>Frontend/UI</td><td>React/JS, HTML, CSS</td></tr>
+              <tr><td>5</td><td>Integration</td><td>APIs, database, testing, Git</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>But don't isolate yourselves. Everyone should understand the overall architecture.</p>
+      </div>
+    </section>
+
+    <!-- 18 & 19. ROADMAP + STACK -->
+    <section class="section" id="roadmap">
+      <div class="wrap">
+        <p class="kicker">18 &middot; 19</p>
+        <h2 class="section-title">What you should learn first</h2>
+        <p>Don't start with YOLO tomorrow morning. Follow this sequence:</p>
+        <div class="stages">
+          <div class="stage"><span class="stage-tag">Stage 1</span><p>Python &rarr; NumPy + Pandas &rarr; Machine-learning fundamentals</p></div>
+          <div class="stage"><span class="stage-tag">Stage 2</span><p>OpenCV &rarr; Image processing &rarr; Object detection concepts &rarr; YOLO</p></div>
+          <div class="stage"><span class="stage-tag">Stage 3</span><p>FastAPI &rarr; REST APIs &rarr; SQLite</p></div>
+          <div class="stage"><span class="stage-tag">Stage 4</span><p>HTML/CSS/JavaScript or React &rarr; Dashboard &rarr; API integration</p></div>
+          <div class="stage"><span class="stage-tag">Stage 5</span><p>Integration: AI &rarr; FastAPI &rarr; SQLite &rarr; Dashboard &rarr; Alerts &rarr; Offline synchronization &rarr; Final demonstration</p></div>
+        </div>
+
+        <h3 class="subhead">The minimum algorithm stack I'd actually recommend</h3>
+        <p>Don't over-engineer this. For your first working prototype, use:</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td>Computer Vision</td><td>YOLO</td></tr>
+              <tr><td>Image processing</td><td>OpenCV</td></tr>
+              <tr><td>Risk engine</td><td>Weighted scoring + rules</td></tr>
+              <tr><td>Structured-data ML</td><td>Random Forest — optional</td></tr>
+              <tr><td>Data processing</td><td>NumPy + Pandas</td></tr>
+              <tr><td>Backend</td><td>FastAPI</td></tr>
+              <tr><td>Database</td><td>SQLite</td></tr>
+              <tr><td>Frontend</td><td>React + Tailwind if your team knows React, or HTML/CSS/JS if you're beginners</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20. DEMO SCRIPT -->
+    <section class="section section-alt" id="demo-script">
+      <div class="wrap">
+        <p class="kicker">20</p>
+        <h2 class="section-title">What the final demo should look like</h2>
+        <p>A judge clicks <strong>Threat Simulator</strong>. Then:</p>
+        <pre class="ascii">Device    HH-04
+Location  Platform 4
+Scenario  Suspicious Security Event
+
+[ RUN SIMULATION ]</pre>
+        <p>Your system shows:</p>
+        <pre class="ascii">INPUT RECEIVED
+      &darr;
+VISUAL ANALYSIS
+      &darr;
+SENSOR DATA ANALYSIS
+      &darr;
+FEATURE FUSION
+      &darr;
+RISK ASSESSMENT
+      &darr;
+   HIGH RISK</pre>
+        <p>Then:</p>
+        <div class="callout callout-alert">
+          <p>🚨 SECURITY ALERT</p>
+          <p>Risk Level: HIGH<br>Device: HH-04<br>Location: Platform 4<br>Time: 17:45:21</p>
+          <p>Alert sent to control centre.</p>
+        </div>
+        <p>Then the judge opens Incidents and sees the new record. Then open Dashboard and the statistics have updated. Then demonstrate:</p>
+        <pre class="ascii">NETWORK OFF
+      &darr;
+EVENT STORED LOCALLY
+      &darr;
+NETWORK RESTORED
+      &darr;
+7/7 EVENTS SYNCHRONIZED</pre>
+        <p>That gives you a complete end-to-end prototype, even without the physical quadruped, chemical sensor, or handheld hardware.</p>
+
+        <h3 class="subhead">The key sentence for your presentation</h3>
+        <blockquote class="quote quote-feature">
+          "Railvision is not the physical detection sensor; it is the software intelligence and command layer
+          that receives field-device inputs, performs AI-assisted analysis and risk assessment, and converts
+          those inputs into actionable alerts and geo-tagged incidents."
+        </blockquote>
+        <p>That distinction will make your technical explanation much more credible.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="brand-text">Rail<strong>Vision</strong></span>
+      <p>AI decision &amp; command layer for railway security — prototype concept.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
